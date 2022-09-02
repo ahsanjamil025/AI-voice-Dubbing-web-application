@@ -1,0 +1,220 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Owl voiceSwapper - Owl voice Agency Template</title>
+
+    <link rel="stylesheet" href="{%  static 'css/maicons.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'vendor/animate/animate.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'css/theme.css'%}">
+</head>
+
+<body>
+
+    <!-- Back to top button -->
+    <div class="back-to-top"></div>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="300">
+            <div class="container">
+                <a href="{% url 'home' %}" class="navbar-brand">Owl <span class="text-primary">voiceSwapper</span></a>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="navbar-collapse collapsed" id="navbarContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'service' %}">Services</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                         {% if user.is_authenticated %}
+                         <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-2" href= "{% url 'logout' %}">LogOut {{request.user}}</a>
+                        </li>
+                        {% else %}
+
+                        <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-2" href="{% url 'login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        
+        
+        <div class="container">
+            <div class="page-banner"style="background-image: url('static/img/25.png');">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-md-6">
+                        <nav aria-label="Breadcrumb"  >
+                            <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                                <li class="breadcrumb-item" ><a href="{% url 'home' %}">Home</a></li>
+                                <li class="breadcrumb-item active">Contact</li>
+                            </ul>
+                        </nav>
+                        <h1 class="text-center">Contact Us</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    
+
+    <div class="page-section">
+        <div class="container">
+           {% if messages %}
+
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            {% endfor %}
+
+            {% endif %}
+            <div class="row text-center align-items-center">
+             
+                <div class="col-lg-4 py-3">
+                    <div class="display-4 text-center text-primary"><span class="mai-pin"></span></div>
+                    <p class="mb-3 font-weight-medium text-lg">Address</p>
+                    <p class="mb-0 text-secondary">Comsats University Islamabad,sahiwal campus</p>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <div class="display-4 text-center text-primary"><span class="mai-call"></span></div>
+                    <p class="mb-3 font-weight-medium text-lg">Phone</p>
+                    <p class="mb-0"><a href="#" class="text-secondary">+00 1122 3344 5566</a></p>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <div class="display-4 text-center text-primary"><span class="mai-mail"></span></div>
+                    <p class="mb-3 font-weight-medium text-lg">Email Address</p>
+                    <p class="mb-0"><a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=GTvVlcRwQZhMcclrVjzQlgmwdmhsrdrCbKGGkQcsqzNDRhqgrFNjpWnGSlsltDnWDqJDzfzfJNflc" class="text-secondary">gcoolab71@gmail.com </a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <form action="/contact" method="POST" class="contact-form py-5 px-lg-5">
+                        <h2 class="mb-4 font-weight-medium text-secondary">Get in touch</h2>
+                        <div class="row form-group">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label class="text-black" for="fname">First Name</label>
+                                <input type="text" id="fname" name="Name" class="form-control " required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-black" for="lname">Last Name</label>
+                                <input type="text" id="lname" name="LastName" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="email">Email</label>
+                                <input type="email"  name="Email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+
+                            <div class="col-md-12">
+                                <label class="text-black" for="subject">Subject</label>
+                                <input type="text"  name="Subject" id="subject" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="message">Message</label>
+                                <textarea name="Message"  name="Message" id="message" cols="30" rows="5" class="form-control" placeholder="Write your notes or questions here..." required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row form-group mt-4">
+                            <div class="col-md-12">
+                                <input type="submit" value="Send Message" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 px-0">
+                    <div class="maps-container">
+                        <div  > <iframe style="width:100%; height:700px" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13730.912181302727!2d73.149107!3d30.6416211!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc37ea3d85326203!2sCOMSATS%20University%20Islamabad%20-%20Sahiwal%20Campus!5e0!3m2!1sen!2s!4v1653219695359!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <footer class="page-footer bg-image" style="background-image: url(static/img/world_pattern.svg);">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-4 py-3">
+                    <h3>Owl voiceSwapper</h3>
+                    <p>Your feedback, as well as your recommendations, are extremely valuable to us. Follow us on other social media platforms
+                    </p>
+
+                    <div class="social-media-button">
+                        <a href="#"><span class="mai-logo-facebook-f"></span></a>
+                        <a href="#"><span class="mai-logo-twitter"></span></a>
+                        <a href="#"><span class="mai-logo-google-plus-g"></span></a>
+                        <a href="#"><span class="mai-logo-youtube"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <h5>Company Services</h5>
+                    <ul class="footer-menu">
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'serviceOne'%}">Text Translation</a></li>
+                        <li><a href="{% url 'serviceTwo'%}">AI bot cloning</a></li>
+                        <li><a href="{% url 'serviceThree' %}">Video Dubbing </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <h5>Contact Us</h5>
+                    <p>Comsats University Islamabad,sahiwal campus </p>
+                    <a href="#" class="footer-link">+00 1122 3344 5566</a>
+                    <br>
+                    <a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=GTvVlcRwQZhMcclrVjzQlgmwdmhsrdrCbKGGkQcsqzNDRhqgrFNjpWnGSlsltDnWDqJDzfzfJNflc" class="footer-link">      gcoolab71@gmail.com       </a>
+                </div>
+              </div>
+        </div>
+    </footer>
+
+    <script src="{%  static 'js/jquery-3.5.1.min.js'%}"></script>
+
+    <script src="{%  static 'js/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="{%  static 'js/google-maps.js'%}"></script>
+
+    <script src="{%  static 'vendor/wow/wow.min.js'%}"></script>
+
+    <script src="{%  static 'js/theme.js'%}"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Owl voiceSwapper - Owl voice Agency Template</title>
+
+    <link rel="stylesheet" href="{%  static 'css/maicons.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'vendor/animate/animate.css'%}">
+
+    <link rel="stylesheet" href="{%  static 'css/theme.css'%}">
+
+</head>
+
+<body>
+
+    <!-- Back to top button -->
+    <div class="back-to-top"></div>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
+            <div class="container">
+                <a href="{% url 'home' %}" class="navbar-brand">Owl <span class="text-primary">voiceSwapper</span></a>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="navbar-collapse collapse" id="navbarContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'service' %}">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                         {% if user.is_authenticated %}
+                         <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-2" href= "{% url 'logout' %}">Logout {{request.user}}</a>
+                        </li>
+                        {% else %}
+
+                        <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-2" href="{% url 'login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container" >
+            <div style="background-image: url('static/img/main.jpg');" class="page-banner home-banner" >
+                <div class="row align-items-center flex-wrap-reverse h-100" >
+                    
+                    <div class="col-md-6 py-5 wow fadeInLeft" >
+                        <h1 style="color:white;" class="mb-4">Welcome you in OWL Voice Swapper</h1>
+                        <p style="color:white;" class="text-lg text-grey mb-5">Motive to make interest interesting</p>
+                        <a href="https://youtu.be/dXETmknGNM8" class="btn btn-primary btn-split">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+                    </div>
+                    <div class="col-md-6 py-5 wow zoomIn">
+                        <div class="img-fluid text-center">
+                            <img style="width:450px;height:350px;" src="static/img/index.png" alt="">
+                            
+                        </div>
+                    </div>
+                </div>
+                <a href="#services"" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-section"id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card-service wow fadeInUp">
+                        <div class="header">
+                            <img style="height: 38%;width: 38%;" src="static/img/services/font.png" alt="">
+                        </div>
+                        <div class="body">
+                            <h5 class="text-secondary">Text Tanslation</h5>
+                            <p>We can assist you by providing an optimal and accurate translation. </p>
+                            <a href="{% url 'serviceOne'%}" class="btn btn-primary">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-service wow fadeInUp">
+                        <div class="header">
+                            <img style="height: 38%;width: 38%;" src="static/img/services/microphone.png" alt="">
+                        </div>
+                        <div class="body">
+                            <h5 class="text-secondary">AI Bot Cloning</h5>
+                            <p>Artificial intelligence might aid the duplicated voice with just one click.</p>
+                            <a href="{% url 'serviceTwo'%}" class="btn btn-primary">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-service wow fadeInUp">
+                        <div class="header">
+                            <img style="height: 38%;width: 38%;" src="static/img/services/play-button.png" alt="">
+                        </div>
+                        <div class="body">
+                            <h5 class="text-secondary">Video Dubbing</h5>
+                            <p>An quick and effective approach to dub your video</p>
+                             {% if user.is_authenticated %}
+                             <a href="{% url 'serviceThree' %}" class="btn btn-primary">Click Here</a>
+                            
+                            {% else %}
+                            <!-- <a href="{% url 'serviceThree' %}" class="btn btn-primary">Click Here1</a> -->
+                            <a href="{% url 'login' %}" class="btn btn-primary"  onclick="return confirm('Please login first to use this service')">Click Here</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .page-section -->
+
+    <div class="page-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 py-3 wow fadeInUp">
+                    <span class="subhead">About us</span>
+                    <h2 class="title-section"> Owl voice Service </h2>
+                    <div class="divider"></div>
+
+                    <p>We can help you by delivering a high-quality, precise translation of your documents. With just one click, artificial intelligence might assist the replicated voice. A simple and effective method for dubbing your video.</p>
+                    <p>This is a physically demanding profession. To avoid this, individuals may take up the tale and comprehend it fast if they watch the series in their original language, and then they can do anything else while watching the series.</p>
+                    <a href="{% url 'about' %}" class="btn btn-primary mt-3">Read More</a>
+                </div>
+                <div class="col-lg-6 py-3 wow fadeInRight">
+                    <div class="img-fluid py-3 text-center">
+                        <img src="static/img/aboutUs.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .page-section -->
+<!-- 
+    <div class="page-section bg-light">
+        <div class="container">
+            <div class="text-center wow fadeInUp">
+                <div class="subhead">Our services</div>
+                <h2 class="title-section">How Owl voice Team Can Help</h2>
+                <div class="divider mx-auto"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-5 col-xl-4 py-3 wow zoomIn">
+                    <div class="features">
+                        <div class="header mb-3">
+                            <span class="mai-business"></span>
+                        </div>
+                        <h5>OnSite Owl voice</h5>
+                        <p>We analyse your website's structure, internal architecture & other key</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-5 col-xl-4 py-3 wow zoomIn">
+                    <div class="features">
+                        <div class="header mb-3">
+                            <span class="mai-business"></span>
+                        </div>
+                        <h5>OnSite Owl voice</h5>
+                        <p>We analyse your website's structure, internal architecture & other key</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-5 col-xl-4 py-3 wow zoomIn">
+                    <div class="features">
+                        <div class="header mb-3">
+                            <span class="mai-business"></span>
+                        </div>
+                        <h5>OnSite Owl voice</h5>
+                        <p>We analyse your website's structure, internal architecture & other key</p>
+                    </div>
+                </div>
+              </div>
+
+        </div> -->
+        <!-- .container -->
+    </div>
+    <!-- .page-section -->
+<!-- 
+    <div class="page-section banner-Owl voice-check">
+        <div class="wrap bg-image" style="background-image: url(static/img/bg_pattern.svg);">
+            <div class="container text-center">
+                <div class="row justify-content-center wow fadeInUp">
+                    <div class="col-lg-8">
+                        <h2 class="mb-4">Check your Website Owl voice</h2>
+                        <form action="#">
+                            <input type="text" class="form-control" placeholder="Translate this phase">
+                            <button type="submit" class="btn btn-success">Check Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .wrap -->
+    </div> 
+    <!-- .page-section -->
+
+    <div class="page-section">
+        <div class="container">
+            <div class="text-center wow fadeInUp">
+                <div class="subhead">Pricing Plan</div>
+                <h2 class="title-section">Choose plan the right for you</h2>
+                <div class="divider mx-auto"></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 py-3 wow zoomIn">
+                    <div class="card-pricing">
+                        <div class="header">
+                            <div class="pricing-type">Free</div>
+                            <div class="price">
+                                <span class="dollar">Rs</span>
+                                <h1>0<span class="suffix"></span></h1>
+                            </div>
+                            <h5>Per Month</h5>
+                        </div>
+                        <div class="body">
+                            <p>Unlimited <span class="suffix">Text translation</span></p>
+                            <p>limited voice <span class="suffix">Keywords</span></p>
+                            <p>Unlimited <span class="suffix">AI bot clonings</span></p>
+                            <p>No <span class="suffix">Video Dubbings</span></p>
+                            <p>24/7 <span class="suffix">Support</span></p>
+                        </div>
+                        <div class="footer">
+                            <a href="{% url 'service' %}" class="btn btn-pricing btn-block">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 py-3 wow zoomIn">
+                    <div class="card-pricing marked">
+                        <div class="header">
+                            <div class="pricing-type">Standard</div>
+                            <div class="price">
+                                <span class="dollar">Rs</span>
+                                <h1>800<span class="suffix"></span></h1>
+                            </div>
+                            <h5>Per Month</h5>
+                        </div>
+                        <div class="body">
+                            <p>Unlimited <span class="suffix">Text translation</span></p>
+                            <p>Ulimited voice <span class="suffix">Keywords</span></p>
+                            <p>Unlimited <span class="suffix">AI bot clonings</span></p>
+                            <p>5  <span class="suffix">Video Dubbings</span></p>
+                            <p>24/7 <span class="suffix">Support</span></p>
+                            <P><h1></h1></P>
+                        </div>
+                        <div class="footer">
+                            <a href="{% url 'login' %}" class="btn btn-pricing btn-block">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 py-3 wow zoomIn">
+                    <div class="card-pricing">
+                        <div class="header">
+                            <div class="pricing-type">Professional</div>
+                            <div class="price">
+                                <span class="dollar">Rs</span>
+                                <h1>1600<span class="suffix"></span></h1>
+                            </div>
+                            <h5>Per Month</h5>
+                        </div>
+                        <div class="body">
+                            <p>Unlimited <span class="suffix">Text translation</span></p>
+                            <p>Unlimited Change <span class="suffix">Keywords</span></p>
+                            <p>Unlimited <span class="suffix">AI bot clonings</span></p>
+                            <p>Unlimited <span class="suffix">Video Dubbings</span></p>
+                            <p>24/7 <span class="suffix">Support</span></p>
+                        </div>
+                        <div class="footer">
+                            <a href="{% url 'login' %}" class="btn btn-pricing btn-block">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .page-section -->
+
+    <!-- Banner info -->
+    <div class="page-section banner-info">
+        <div class="wrap bg-image" style="background-image: url(../assets/img/bg_pattern.svg);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 py-3 pr-lg-5 wow fadeInUp">
+                        <h2 class="title-section">Owl voice to Improve Brand <br> Visibility</h2>
+                        <div class="divider"></div>
+                        <p>We devote our complete attention to making our clients' experiences as pleasant as possible. There are certain future objectives that we'd like to explore with our customers.</p>
+
+                        <ul class="theme-list theme-list-light text-white">
+                            <li>
+                                <div class="h5">Owl voice Content Strategy</div>
+                                <p>Add emotion to cloning to make it more and more accurate</p>
+                            </li>
+                            <li>
+                                <div class="h5">B2B Owl voice</div>
+                                <p>Provide API for other software to use our model and your application complete</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 py-3 wow fadeInRight">
+                        <div class="img-fluid text-center">
+                            <img src="static/img/banner_image_2.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .wrap -->
+    </div>
+    <!-- .page-section -->
+
+  
+
+    <footer class="page-footer bg-image" style="background-image: url(static/img/world_pattern.svg);">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-4 py-3">
+                    <h3>Owl voiceSwapper</h3>
+                    <p>Your feedback, as well as your recommendations, are extremely valuable to us. Follow us on other social media platforms
+                    </p>
+
+                    <div class="social-media-button">
+                        <a href="#"><span class="mai-logo-facebook-f"></span></a>
+                        <a href="#"><span class="mai-logo-twitter"></span></a>
+                        <a href="#"><span class="mai-logo-google-plus-g"></span></a>
+                        <a href="#"><span class="mai-logo-youtube"></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <h5>Company Services</h5>
+                    <ul class="footer-menu">
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'serviceOne'%}">Text Translation</a></li>
+                        <li><a href="{% url 'serviceTwo'%}">AI bot cloning</a></li>
+                        <li><a href="{% url 'serviceThree' %}">Video Dubbing </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 py-3">
+                    <h5>Contact Us</h5>
+                    <p>Comsats University Islamabad,sahiwal campus </p>
+                    <a href="#" class="footer-link">+00 1122 3344 5566</a>
+                    <br>
+                    <a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=GTvVlcRwQZhMcclrVjzQlgmwdmhsrdrCbKGGkQcsqzNDRhqgrFNjpWnGSlsltDnWDqJDzfzfJNflc" class="footer-link">      gcoolab71@gmail.com       </a>
+                </div>
+              </div>
+        </div>
+    </footer>
+
+    <script src="{%  static 'js/jquery-3.5.1.min.js'%}"></script>
+
+    <script src="{%  static 'js/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="{%  static 'js/google-maps.js'%}"></script>
+
+    <script src="{%  static 'vendor/wow/wow.min.js'%}"></script>
+
+    <script src="{%  static 'js/theme.js'%}"></script>
+
+</body>
+
+</html>
